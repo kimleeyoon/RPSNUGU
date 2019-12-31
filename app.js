@@ -5,13 +5,7 @@ const path = require("path"); // OS Path 조정 시 사용
 let bodyParser = require("body-parser");
 const EventEmitter = require("events").EventEmitter; // 이벤트 on, listener
 
-const Room = require("./room"); // 방 class
-const Member = require("./member"); // 멤버 class
-const system = require("./logic"); // 로직 프로그램
-const getT = require("./main/index").getText;
-
-let nugu = require("./main"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
-let logger = require("./logger");
+// let nugu = require("./main"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
 
 const app = express();
 let router = express.Router();
