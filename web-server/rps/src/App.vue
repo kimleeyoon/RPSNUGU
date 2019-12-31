@@ -1,5 +1,10 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <p v-if="isShowing">
+      치킨치킨치킨 디너
+    </p>
+    <button @click.prevent="test">Hide</button>
+  </div>
 </template>
 <script>
 import io from "socket.io-client";
@@ -10,10 +15,14 @@ export default {
   data() {
     return {
       roomID: "",
-      socket: io()
+      socket: io(),
+      isShowing: true
     };
   },
   methods: {
+    test(e) {
+      this.isShowing = !this.isShowing;
+    },
     roomConnect(e) {},
     sendMessage(e) {
       e.preventDefault();
