@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p v-if="isShowing">
-      치킨치킨치킨 디너
+      치킨치킨치킨 디너!
     </p>
     <button @click.prevent="test">Hide</button>
   </div>
