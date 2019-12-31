@@ -3,7 +3,9 @@
     <p v-if="isShowing">
       치킨치킨치킨 디너!
     </p>
-    <button @click.prevent="test">Hide</button>
+    <button @click.prevent="test">가위</button>
+    <button @click.prevent="test">바위</button>
+    <button @click.prevent="test">보</button>
   </div>
 </template>
 <script>
