@@ -6,14 +6,34 @@ class Request {
     actionRequest(response, sendData) {
         let actionName = this.action.actionName;
         let parameters = this.action.parameters;
+
+        let setPar = setParametersFactory(response, sendData)
+
         switch (actionName) {
-            case "액션 이름": {
-                response.setParameters({
-                    roomExist: 1,
-                }, sendData)
+            case "SayWhatToDoAction": {
+                // response.setParameters({
+                //     roomExist: 1,
+                // }, sendData)
+                setPar({
+                    roomExist: 1
+                })
+                break;
+            }
+            case "WebSelectAction": {
+
+                break;
+            }
+            case "ResultAction" : {
+
                 break;
             }
         }
+    }
+}
+
+function setParametersFactory(response, sendData){
+    return function(data){
+        response.setParameters(data, sendData);
     }
 }
 
