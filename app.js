@@ -3,7 +3,6 @@ const http = require("http"); //
 const static = require("serve-static"); // 서버 경로 재지정 해주는
 const path = require("path"); // OS Path 조정 시 사용
 let bodyParser = require("body-parser");
-// const EventEmitter = require("events").EventEmitter; // 이벤트 on, listener
 
 let nugu = require("./index"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
 
@@ -19,10 +18,10 @@ io.adapter(
   })
 );
 // var io = require('socket.io-emitter')(server);
-var emitter = require("socket.io-emitter")({
-  host: "localhost",
-  port: 6379
-});
+// var emitter = require("socket.io-emitter")({
+//   host: "localhost",
+//   port: 6379
+// });
 
 app.use("/", static(path.join(__dirname, "public/dist"))); // public/dist 폴더를 클라이언트가 루트경로로 접근하도록 해줌
 

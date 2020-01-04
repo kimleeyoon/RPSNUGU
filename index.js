@@ -10,7 +10,7 @@ class Request {
             case "액션 이름": {
                 response.setParameters({
                     roomExist: 1,
-                })
+                }, sendData)
                 break;
             }
         }
