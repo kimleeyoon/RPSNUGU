@@ -37,7 +37,21 @@ app.use((err, req, res, next) => next());
 // routing 시작
 router.route("/nugu/SayWhatToDoAction").post((req, res, next) => {
   console.log("SayWhatToDoAction 옴");
-  nugu(req, res, next);
+  
+  let id = nugu(req, res, next, createSystem);
+
+});
+
+router.route("/nugu/WebSelectAction").post((req, res, next) => {
+  console.log("WebSelectAction 옴");
+  System = new System
+  systems[id] = system
+  nugu(req, res, next, createSystem);
+});
+
+router.route("/nugu/ResultAction").post((req, res, next) => {
+  console.log("ResultAction 옴");
+  nugu(req, res, next, createSystem);
 });
 
 // routing 끝
@@ -57,5 +71,35 @@ io.on("connection", socket => {
     console.log("I'm fine!");
   });
 });
+
+let systems = new Systems()
+
+function createSystem(id){
+  systems.appendSystem(id)
+}
+
+class Systems {
+  constructor(){
+    this.systems = []
+  }
+  appendSystem(id){
+    this.systems[id] = new System()
+  }
+}
+
+class System {
+  constructor(){
+    this.state = "None"
+    this.speakerItem = "None"
+    this.methods = {}
+    this.methods.setSpeakerItem = function(item) {
+      this.speakerItem = item
+    }
+    this.methods.setState = function(item) {
+      this.state = item
+    }
+  }
+
+}
 
 

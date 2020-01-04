@@ -16,11 +16,19 @@ class Request {
                 // }, sendData)
                 setPar({
                     roomExist: 1
+                    
                 })
+                return this.context.session.id;
                 break;
             }
             case "WebSelectAction": {
+                if(!!parameters){ // 파라미터가 존재한다면
+                    if(parameters.length != 0){
+                        parameters.SpeakerItem
+                    }
+                }else{ // 파라미터가 없다면
 
+                }
                 break;
             }
             case "ResultAction" : {
