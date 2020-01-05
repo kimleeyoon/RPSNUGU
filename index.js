@@ -14,7 +14,7 @@ class Request {
                 // response.setParameters({
                 //     roomExist: 1,
                 // }, sendData)
-                setPar({
+                setPar({      //올ㅋ
                     roomExist: 1
                     
                 })
