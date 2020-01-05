@@ -37,7 +37,7 @@ app.use((err, req, res, next) => next());
 // routing 시작
 router.route("/nugu/SayWhatToDoAction").post((req, res, next) => {
   console.log("SayWhatToDoAction 옴");
-  
+
   let id = nugu(req, res, next, createSystem);
 
 });
@@ -71,24 +71,25 @@ io.on("connection", socket => {
     console.log("I'm fine!");
   });
 });
-
+/*
 let systems = new Systems()
 
-function createSystem(id){
+function createSystem(id) {
   systems.appendSystem(id)
 }
 
 class Systems {
-  constructor(){
+  constructor() {
     this.systems = []
   }
-  appendSystem(id){
+  appendSystem(id) {
     this.systems[id] = new System()
   }
 }
+*/
 
 class System {
-  constructor(){
+  constructor() {
     this.state = "None"
     this.speakerItem = "None"
     this.methods = {}
@@ -101,5 +102,3 @@ class System {
   }
 
 }
-
-
