@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import io from "socket.io-client";
+import { setTimeout } from "timers";
+
 // LifeCycle : created, mounted, updated, destroyed
 // created : 처음 컴포넌트가 만들어 질때(화면 나타나기 전)
 // mounted : 컴포넌트가 화면에 나타난 후
@@ -40,9 +43,11 @@ let interval = null;
 export default {
   data() {
     return {
+      socket : io(),
       imgCoord: rspCoords.바위,
       result: "",
-      score: 0
+      score: 0,
+      userChoice: ""
     };
   },
   computed: {
@@ -79,9 +84,18 @@ export default {
         this.result = "졌습니다.";
         this.score -= 1;
       }
+      this.userChoice = choice;
+      this.sendMessage(this.userChoice)
       setTimeout(() => {
         this.changeHand();
       }, 1000);
+    },
+    roomConnect(e) {},
+    sendMessage(choice) {
+      // e.preventDefault();
+      this.socket.emit("메시지", {
+        userChoice : choice
+      });
     }
   },
   beforeCreate() {
@@ -113,6 +127,15 @@ export default {
   destroyed() {
     // 컴포넌트가 사라질때
     console.log("destroyed");
+  },
+  components: {},
+  mounted() {
+    this.socket.on("ROOM_CONNECT", data => {
+      // this.socket = [...this.messages, data];
+      this.temp += `${data.name}가 ${data.room}번 방에 들어왔습니다.`;
+      this.members = data.member;
+      this.roomSize = data.size;
+    });
   }
 };
 </script>

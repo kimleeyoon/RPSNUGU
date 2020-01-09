@@ -11,6 +11,8 @@ class MainServer {
 
     this.message = "None";
 
+    this.promises = {};
+
     // let nugu = require("./index"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
 
     this.app = this.express();
@@ -74,6 +76,9 @@ class MainServer {
       socket.on("How are You?", msg => {
         console.log("I'm fine!");
       });
+      socket.on("메시지", data => {
+        
+      });
     });
   }
 
@@ -82,6 +87,12 @@ class MainServer {
   }
   getMessage() {
     return this.message;
+  }
+
+  createPromise(roomId, callBack){
+    this.promises[roomId] = new Promise((callBack, reject) => {
+      
+    });
   }
 
 }

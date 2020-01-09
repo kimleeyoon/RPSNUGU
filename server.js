@@ -1,7 +1,9 @@
 const nuguServer = require('./index');
 const server = require('./app')(nuguServer);
 
+server.createPromise('1111', voteEnd);
 
+function voteEnd(){
+    console.log("voteEnd");
+}
 
-nuguServer.setMessage('1020201012040210', 'Hello World');
-console.log(nuguServer.getMessage('1020201012040210'));
