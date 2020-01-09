@@ -28,39 +28,36 @@ class MainServer {
     //   port: 6379
     // });
 
-    this.app.use("/", static(path.join(__dirname, "public/dist"))); // public/dist 폴더를 클라이언트가 루트경로로 접근하도록 해줌
+    this.app.use("/", this.static(path.join(__dirname, "public/dist"))); // public/dist 폴더를 클라이언트가 루트경로로 접근하도록 해줌
 
     this.app.use(
       bodyParser.urlencoded({
         extended: false
       })
     );
-    this.app.use(bodyParser.json());
+    this.app.use(this.bodyParser.json());
 
     this.app.use((err, req, res, next) => next());
 
     // routing 시작
     this.router.route("/nugu/SayWhatToDoAction").post((req, res, next) => {
       console.log("SayWhatToDoAction 옴");
-
-      let id = nugu(req, res, next, createSystem);
+      this.nugu(req, res, next, createSystem);
 
     });
 
     this.router.route("/nugu/WebSelectAction").post((req, res, next) => {
       console.log("WebSelectAction 옴");
-      System = new System
-      systems[id] = system
-      nugu(req, res, next, createSystem);
+      this.nugu(req, res, next, createSystem);
     });
 
     this.router.route("/nugu/ResultAction").post((req, res, next) => {
       console.log("ResultAction 옴");
-      nugu(req, res, next, createSystem);
+      this.nugu(req, res, next, createSystem);
     });
 
     // routing 끝
-    this.app.use("/", router);
+    this.app.use("/", this.router);
 
     this.server.listen(3000, () => {
       console.log("Server is open");
