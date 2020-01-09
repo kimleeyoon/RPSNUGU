@@ -11,10 +11,10 @@ class MainServer {
 
     // let nugu = require("./index"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
 
-    this.app = express();
-    this.router = express.Router();
-    this.server = http.Server(app); // 익스프레스 사용해서 서버 생성 및 할당
-    this.io = require("socket.io")(server); // socket.io 서버 생성
+    this.app = this.express();
+    this.router = this.express.Router();
+    this.server = this.http.Server(this.app); // 익스프레스 사용해서 서버 생성 및 할당
+    this.io = require("socket.io")(this.server); // socket.io 서버 생성
     this.redisAdapter = require("socket.io-redis");
     this.io.adapter(
       redisAdapter({
@@ -28,10 +28,10 @@ class MainServer {
     //   port: 6379
     // });
 
-    this.app.use("/", this.static(path.join(__dirname, "public/dist"))); // public/dist 폴더를 클라이언트가 루트경로로 접근하도록 해줌
+    this.app.use("/", this.static(this.path.join(__dirname, "public/dist"))); // public/dist 폴더를 클라이언트가 루트경로로 접근하도록 해줌
 
     this.app.use(
-      bodyParser.urlencoded({
+      this.bodyParser.urlencoded({
         extended: false
       })
     );
