@@ -14,24 +14,24 @@ class Request {
                 // response.setParameters({
                 //     roomExist: 1,
                 // }, sendData)
-                setPar({      //올ㅋ
+                setPar({ //올ㅋ
                     roomExist: 1
-                    
+
                 })
                 return this.context.session.id;
                 break;
             }
             case "WebSelectAction": {
-                if(!!parameters){ // 파라미터가 존재한다면
-                    if(parameters.length != 0){
+                if (!!parameters) { // 파라미터가 존재한다면
+                    if (parameters.length != 0) {
                         parameters.SpeakerItem
                     }
-                }else{ // 파라미터가 없다면
+                } else { // 파라미터가 없다면
 
                 }
                 break;
             }
-            case "ResultAction" : {
+            case "ResultAction": {
 
                 break;
             }
@@ -39,10 +39,20 @@ class Request {
     }
 }
 
-function setParametersFactory(response, sendData){
-    return function(data){
+function setParametersFactory(response, sendData) {
+    return function (data) {
         response.setParameters(data, sendData);
     }
+}
+
+let messages = {};
+
+function setMessage(sessionId, message) {
+    messages[sessionId] = message;
+}
+
+function getMessage(sessionId) {
+    return messages[sessionId];
 }
 
 class Response {
@@ -71,5 +81,5 @@ const reqObject = (req, res, next) => {
 };
 
 module.exports = reqObject;
-
-
+module.exports.setMessage = setMessage;
+module.exports.getMessage = getMessage;
