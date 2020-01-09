@@ -17,7 +17,7 @@ class MainServer {
     this.io = require("socket.io")(this.server); // socket.io 서버 생성
     this.redisAdapter = require("socket.io-redis");
     this.io.adapter(
-      redisAdapter({
+      this.redisAdapter({
         host: "localhost",
         port: 6379
       })
