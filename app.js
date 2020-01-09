@@ -9,6 +9,8 @@ class MainServer {
 
     this.nugu = nuguServer;
 
+    this.message = "None";
+
     // let nugu = require("./index"); // 스피커 서버에서 실행할 프로그램 받아오는 것 -> index.js
 
     this.app = this.express();
@@ -74,6 +76,14 @@ class MainServer {
       });
     });
   }
+
+  setMessage(message) {
+    this.message = message;
+  }
+  getMessage() {
+    return this.message;
+  }
+
 }
 
 function createServer(nuguServer) {
