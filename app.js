@@ -77,7 +77,7 @@ class MainServer {
         console.log("I'm fine!");
       });
       socket.on("메시지", data => {
-        
+
       });
     });
   }
@@ -91,7 +91,7 @@ class MainServer {
 
   createPromise(roomId, callBack){
     this.promises[roomId] = new Promise((callBack, reject) => {
-      
+
     });
   }
 
