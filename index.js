@@ -14,20 +14,41 @@ class Request {
         // response.setParameters({
         //     roomExist: 1,
         // }, sendData)
-        setPar({ //올ㅋ
-          roomExist: 1
-
-        })
+        let speaker_item = parameters.SpeakerItem
+        if(parameters.length != 0 && speaker_item){
+          speaker_item = parseString(speaker_item.valueExpression);
+        }
+        if(isNaN(speaker_item)) {
+          speaker_item = 0; //주먹이라고 일단 해
+        }
+        // setPar({ //올ㅋ
+          // roomExist: 1
+        response.setParameters({
+          SpeakerItem: speaker_item
+        }, sendData)
         return this.context.session.id; //이거 어따 써? 웹에서 들어오는 응답이랑 매칭?
         break;
       }
+
+
       case "WebSelectAction": {
         let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
-        if (parameters.SpeakerItem - web_item == 0) { //비김
+        let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
+        if(Parameters.SpeakerItem == '가위'){
+          speakerItemInt = 1
+        }
+        if(parameters.SpeakerItem == '바위'){
+          speakerItemInt = 0
+        } else {
+          speakerItemInt = -1
+        }
+
+
+        if (speakerItemInt - web_item == 0) { //비김
           game_result = 0
         }
-        if (Parameters.SpeakerItem - web_item == 2 || parameters.SpeakerItem - web_item == -1) { //이김
+        if (speakerItemInt - web_item == 2 || speakerItemInt - web_item == -1) { //이김
           game_result = 1
         } else { //짐
           game_result = -1
@@ -36,6 +57,7 @@ class Request {
           if (parameters.length != 0) {
             parameters.SpeakerItem
             response.setParameters({
+              SpeakerItem: speaker_item,
               WebItem: web_item,
               GameResult: game_result
             }, sendData)
@@ -47,16 +69,17 @@ class Request {
       }
       case "ResultAction": {
         let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
-        let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
-        if (parameters.SpeakerItem - web_item == 0) { //비김
-          game_result = 0
+        //let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
+        if (game_result == 0) { //비김
+          game_result = "무승부에요."
         }
-        if (Parameters.SpeakerItem - web_item == 2 || parameters.SpeakerItem - web_item == -1) { //이김
-          game_result = 1
+        if (game_result == 2 || game_result == -1) { //이김
+          game_result = "스피커 플레이어님이 승리 하였어요."
         } else { //짐
-          game_result = -1
+          game_result = "스피커 플레이어님이 패배 하였어요."
         }
         response.setParameters({
+          SpeakerItem: speaker_item,
           WebItem: web_item,
           GameResult: game_result
         }, sendData);
@@ -92,7 +115,10 @@ class Response {
   }
   setParameters(result, sendData) {
     this.output = {
-      roomExist: result.roomExist
+      roomExist: result.roomExist,
+      SpeakerItem: result.SpeakerItem,
+      WebItem: result.WebItem,
+      GameResult: result.GameResult
     }
 
     sendData(this);
