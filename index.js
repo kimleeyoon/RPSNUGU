@@ -133,7 +133,7 @@ class Request {
         }, sendData);
         console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
-        console.log("결과 : " result.GameResult);
+        console.log("결과 : " ,result.GameResult);
         break;
       }
     }
