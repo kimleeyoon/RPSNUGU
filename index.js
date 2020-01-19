@@ -101,11 +101,26 @@ class Request {
         if (game_result == 0) { //비김
           game_result = "무승부에요."
         }
-        if (game_result == 2 || game_result == -1) { //이김
+        if (game_result == 1) { //이김
           game_result = "스피커 플레이어님이 승리 하였어요."
         } else { //짐
           game_result = "스피커 플레이어님이 패배 하였어요."
         }
+
+        if(web_item == 1){
+          web_item = "가위"
+        }
+
+        if(web_item == 0){
+          web_item = "바위"
+        }
+
+        if(web_item == -1){
+          web_item = "보"
+        } else {
+          console.log('오류에용');
+        }
+
         response.setParameters({
           SpeakerItem: parameters.SpeakerItem.value,
           WebItem: web_item,
