@@ -68,7 +68,7 @@ class Request {
          else {
           obj.speakerItemInt = -1
         }
-
+        console.log("obj.speakerItemInt : ", obj.speakerItemInt);
 
         if (obj.speakerItemInt - web_item == 0) { //비김
           obj.game_result = "무승부에요."
