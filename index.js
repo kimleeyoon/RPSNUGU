@@ -87,9 +87,9 @@ class Request {
         } else { // 파라미터가 없다면
 
         }
-        console.log("스피커가 낸 거 : " + SpeakerItem);
-        console.log("웹플레이어가 낸 거 : " + WebItem);
-        console.log("결과 : " + GameResult);
+        console.log("스피커가 낸 거 : " ,speaker_item);
+        console.log("웹플레이어가 낸 거 : " ,web_item);
+        console.log("결과 : " ,game_result);
         break;
       }
 
@@ -110,9 +110,9 @@ class Request {
           WebItem: web_item,
           GameResult: game_result
         }, sendData);
-        console.log("스피커가 낸 거 : " + SpeakerItem);
-        console.log("웹플레이어가 낸 거 : " + WebItem);
-        console.log("결과 : " + GameResult);
+        console.log("스피커가 낸 거 : " ,speaker_item);
+        console.log("웹플레이어가 낸 거 : " ,web_item);
+        console.log("결과 : " ,game_result);
         break;
       }
     }
