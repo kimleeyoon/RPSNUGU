@@ -58,10 +58,10 @@ class Request {
         // let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
         // let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
-        if(parameters.SpeakerItem == '가위'){
+        if(parameters.SpeakerItem.value == '가위'){
           speakerItemInt = 1
         }
-        if(parameters.SpeakerItem == '바위'){
+        if(parameters.SpeakerItem.value == '바위'){
           speakerItemInt = 0
         } else {
           speakerItemInt = -1
@@ -80,7 +80,7 @@ class Request {
           if (parameters.length != 0) {
             //parameters.SpeakerItem
             response.setParameters({
-              SpeakerItem: speaker_item,
+              SpeakerItem: parameters.SpeakerItem.value,
               WebItem: web_item,
               GameResult: game_result
             }, sendData)
@@ -88,7 +88,7 @@ class Request {
         } else { // 파라미터가 없다면
 
         }
-        console.log("스피커가 낸 거 : " ,speaker_item);
+        console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
         console.log("결과 : " ,game_result);
         break;
@@ -107,11 +107,11 @@ class Request {
           game_result = "스피커 플레이어님이 패배 하였어요."
         }
         response.setParameters({
-          SpeakerItem: speaker_item,
+          SpeakerItem: parameters.SpeakerItem.value,
           WebItem: web_item,
           GameResult: game_result
         }, sendData);
-        console.log("스피커가 낸 거 : " ,speaker_item);
+        console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
         console.log("결과 : " ,game_result);
         break;
