@@ -19,8 +19,9 @@ class Request {
 
     let speaker_item = parameters.SpeakerItem
     let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
-    let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
-    let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
+    var obj = {game_result : 0, speakerItemInt : 0}
+    // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
+    // let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
 
 
     switch (actionName) {
@@ -59,23 +60,23 @@ class Request {
         // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
         // let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
         if(parameters.SpeakerItem.value == '가위'){
-          speakerItemInt = 1
+          obj.speakerItemInt = 1
         }
         if(parameters.SpeakerItem.value == '바위'){
-          speakerItemInt = 0
+          obj.speakerItemInt = 0
         }
          else {
-          speakerItemInt = -1
+          obj.speakerItemInt = -1
         }
 
 
         if (speakerItemInt - web_item == 0) { //비김
-          game_result = "무승부에요."
+          obj.game_result = "무승부에요."
         }
         if (speakerItemInt - web_item == 2 || speakerItemInt - web_item == -1) { //이김
-          game_result = "스피커 플레이어님이 승리 하였어요."
+          obj.game_result = "스피커 플레이어님이 승리 하였어요."
         } else { //짐
-          game_result = "스피커 플레이어님이 패배 하였어요."
+          obj.game_result = "스피커 플레이어님이 패배 하였어요."
         }
 
         if (!!parameters) { // 파라미터가 존재한다면
@@ -84,16 +85,16 @@ class Request {
             response.setParameters({
               SpeakerItem: parameters.SpeakerItem.value,
               WebItem: web_item,
-              GameResult: game_result
+              GameResult: obj.game_result
             }, sendData)
           }
         } else { // 파라미터가 없다면
 
         }
-        const final_result = game_result
+
         console.log("스피커가 낸 거 : ",parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : ",web_item);
-        console.log("결과 : ",game_result);
+        console.log("결과 : ",obj.game_result);
         break;
       }
 
@@ -101,7 +102,7 @@ class Request {
       case "ResultAction": {
         // let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
-        console.log("현재 문제의 값 : " ,game_result)
+        console.log("현재 문제의 값 : " ,obj.game_result)
         // if (game_result == 0) { //비김
         //   game_result = "무승부에요."
         // }
@@ -128,11 +129,11 @@ class Request {
         response.setParameters({
           SpeakerItem: parameters.SpeakerItem.value,
           WebItem: web_item,
-          GameResult: final_result
+          GameResult: obj.game_result
         }, sendData);
         console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
-        console.log("결과 : " ,final_result);
+        console.log("결과 : " ,obj.game_result);
         break;
       }
     }
