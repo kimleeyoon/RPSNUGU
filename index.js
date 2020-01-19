@@ -132,6 +132,7 @@ class Request {
           WebItem: web_item,
           GameResult: parameters.GameResult.value
         }, sendData);
+        console.log('%c %s', 'color:green', '이거 안돼?????')
         console.log('%c 스피커가 낸 거 : ', 'color: green; font-size: 24px',parameters.SpeakerItem.value);
         console.log('%c 웹플레이어가 낸 거 : ', 'color: green; font-size: 24px',web_item);
         console.log('%c 결과 : ' , 'color: green; font-size: 24px',parameters.GameResult.value);
