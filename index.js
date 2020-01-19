@@ -6,6 +6,8 @@ class Request {
   actionRequest(response, sendData) {
     let actionName = this.action.actionName;
     let parameters = this.action.parameters;
+    console.log("Action Name");
+    console.log(actionName);
 
     let setPar = setParametersFactory(response, sendData)
 
@@ -14,18 +16,19 @@ class Request {
         // response.setParameters({
         //     roomExist: 1,
         // }, sendData)
-        let speaker_item = parameters.SpeakerItem
-        if(parameters.length != 0 && speaker_item){
-          speaker_item = parseString(speaker_item.valueExpression);
-        }
-        if(isNaN(speaker_item)) {
-          speaker_item = 0; //주먹이라고 일단 해
-        }
-        // setPar({ //올ㅋ
-          // roomExist: 1
-        response.setParameters({
-          SpeakerItem: speaker_item
-        }, sendData)
+        // let speaker_item = parameters.SpeakerItem
+        // if(parameters.length != 0 && speaker_item){
+        //   speaker_item = parseString(speaker_item.valueExpression);
+        // }
+        // if(isNaN(speaker_item)) {
+        //   speaker_item = 0; //주먹이라고 일단 해
+        // }
+        // // setPar({ //올ㅋ
+        //   // roomExist: 1
+        // response.setParameters({
+        //   SpeakerItem: speaker_item
+        // }, sendData)
+        console.log("드디어 된것이다;;;");
         return this.context.session.id; //이거 어따 써? 웹에서 들어오는 응답이랑 매칭?
         break;
       }
@@ -35,7 +38,7 @@ class Request {
         let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
         let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
-        if(Parameters.SpeakerItem == '가위'){
+        if(parameters.SpeakerItem == '가위'){
           speakerItemInt = 1
         }
         if(parameters.SpeakerItem == '바위'){
@@ -55,7 +58,7 @@ class Request {
         }
         if (!!parameters) { // 파라미터가 존재한다면
           if (parameters.length != 0) {
-            parameters.SpeakerItem
+            //parameters.SpeakerItem
             response.setParameters({
               SpeakerItem: speaker_item,
               WebItem: web_item,
@@ -67,6 +70,8 @@ class Request {
         }
         break;
       }
+
+      
       case "ResultAction": {
         let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         //let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
@@ -115,7 +120,7 @@ class Response {
   }
   setParameters(result, sendData) {
     this.output = {
-      roomExist: result.roomExist,
+    //  roomExist: result.roomExist,
       SpeakerItem: result.SpeakerItem,
       WebItem: result.WebItem,
       GameResult: result.GameResult
