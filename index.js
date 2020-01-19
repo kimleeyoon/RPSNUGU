@@ -138,8 +138,7 @@ class Response {
       WebItem: result.WebItem,
       GameResult: result.GameResult
     }
-
-    sendData(this);
+    // sendData(this);  //sendData가 함수가 아니라 머가 필요하징.
   }
 }
 
