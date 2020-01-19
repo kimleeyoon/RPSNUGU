@@ -92,7 +92,7 @@ class Request {
         } else { // 파라미터가 없다면
 
         }
-
+        console.log("\u001b[34mHello \u001b[0mWorld")
         console.log("스피커가 낸 거 : ",parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : ",web_item);
         console.log("결과 : ",obj.game_result);
