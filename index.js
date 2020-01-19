@@ -90,7 +90,7 @@ class Request {
         } else { // 파라미터가 없다면
 
         }
-
+        const final_result = game_result
         console.log("스피커가 낸 거 : ",parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : ",web_item);
         console.log("결과 : ",game_result);
@@ -128,11 +128,11 @@ class Request {
         response.setParameters({
           SpeakerItem: parameters.SpeakerItem.value,
           WebItem: web_item,
-          GameResult: game_result
+          GameResult: final_result
         }, sendData);
         console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
-        console.log("결과 : " ,game_result);
+        console.log("결과 : " ,final_result);
         break;
       }
     }
