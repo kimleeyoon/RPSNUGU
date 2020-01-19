@@ -102,7 +102,7 @@ class Request {
       case "ResultAction": {
         // let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
-        console.log("현재 문제의 값 : " ,result.GameResult)
+        console.log("현재 문제의 값 : " ,parameters.GameResult)
         // if (game_result == 0) { //비김
         //   game_result = "무승부에요."
         // }
@@ -129,11 +129,11 @@ class Request {
         response.setParameters({
           SpeakerItem: parameters.SpeakerItem.value,
           WebItem: web_item,
-          GameResult: result.GameResult
+          GameResult: parameters.GameResult
         }, sendData);
         console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
         console.log("웹플레이어가 낸 거 : " ,web_item);
-        console.log("결과 : " ,result.GameResult);
+        console.log("결과 : " ,parameters.GameResult);
         break;
       }
     }
