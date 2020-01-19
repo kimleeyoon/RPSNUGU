@@ -103,34 +103,34 @@ function createServer(nuguServer) {
 
 module.exports = createServer;
 
-
-let systems = new Systems()
-
+//
+// let systems = new Systems()
+//
 function createSystem(id) {
   systems.appendSystem(id)
 }
-
-class Systems {
-  constructor() {
-    this.systems = []
-  }
-  appendSystem(id) {
-    this.systems[id] = new System()
-  }
-}
-
-
-class System {
-  constructor() {
-    this.state = "None"
-    this.speakerItem = "None"
-    this.methods = {}
-    this.methods.setSpeakerItem = function(item) {
-      this.speakerItem = item
-    }
-    this.methods.setState = function(item) {
-      this.state = item
-    }
-  }
-
-}
+//
+// class Systems {
+//   constructor() {
+//     this.systems = []
+//   }
+//   appendSystem(id) {
+//     this.systems[id] = new System()
+//   }
+// }
+//
+//
+// class System {
+//   constructor() {
+//     this.state = "None"
+//     this.speakerItem = "None"
+//     this.methods = {}
+//     this.methods.setSpeakerItem = function(item) {
+//       this.speakerItem = item
+//     }
+//     this.methods.setState = function(item) {
+//       this.state = item
+//     }
+//   }
+//
+// }
