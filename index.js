@@ -70,10 +70,10 @@ class Request {
         }
 
 
-        if (speakerItemInt - web_item == 0) { //비김
+        if (obj.speakerItemInt - web_item == 0) { //비김
           obj.game_result = "무승부에요."
         }
-        if (speakerItemInt - web_item == 2 || speakerItemInt - web_item == -1) { //이김
+        if (obj.speakerItemInt - web_item == 2 || speakerItemInt - web_item == -1) { //이김
           obj.game_result = "스피커 플레이어님이 승리 하였어요."
         } else { //짐
           obj.game_result = "스피커 플레이어님이 패배 하였어요."
