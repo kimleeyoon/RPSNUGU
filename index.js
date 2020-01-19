@@ -43,7 +43,7 @@ class Request {
       case "WebSelectAction": {
         let speaker_item = parameters.SpeakerItem
         if(parameters.length != 0 && speaker_item){
-          speaker_item = parseString(speaker_item.valueExpression);
+          speaker_item = speaker_item.valueExpression;
         }
         if(isNaN(speaker_item)) {
           speaker_item = 0; //주먹이라고 일단 해
