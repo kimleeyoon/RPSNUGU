@@ -54,6 +54,7 @@ class Request {
         if(isNaN(speaker_item)) {
           speaker_item = 0; //주먹이라고 일단 해
         }
+        console.log("자, parameters.SpeakerItem 이게 뭔지 말해봐 : ", parameters.SpeakerItem)
         // let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
         // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
         // let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
