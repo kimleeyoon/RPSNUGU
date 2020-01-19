@@ -93,9 +93,9 @@ class Request {
 
         }
 
-        console.log("%c 스피커가 낸 거 : ", 'color: green; font-size: 24px',parameters.SpeakerItem.value);
-        console.log("%c 웹플레이어가 낸 거 : ", 'color: green; font-size: 24px',web_item);
-        console.log("%c 결과 : ", 'color: green; font-size: 24px',obj.game_result);
+        console.log('%c 스피커가 낸 거 : ', 'color: green; font-size: 24px',parameters.SpeakerItem.value);
+        console.log('%c 웹플레이어가 낸 거 : ', 'color: green; font-size: 24px',web_item);
+        console.log('%c 결과 : ', 'color: green; font-size: 24px',obj.game_result);
         break;
       }
 
@@ -132,9 +132,9 @@ class Request {
           WebItem: web_item,
           GameResult: parameters.GameResult.value
         }, sendData);
-        console.log("%c 스피커가 낸 거 : ", 'color: green; font-size: 24px',parameters.SpeakerItem.value);
-        console.log("%c 웹플레이어가 낸 거 : ", 'color: green; font-size: 24px',web_item);
-        console.log("%c 결과 : " , 'color: green; font-size: 24px',parameters.GameResult.value);
+        console.log('%c 스피커가 낸 거 : ', 'color: green; font-size: 24px',parameters.SpeakerItem.value);
+        console.log('%c 웹플레이어가 낸 거 : ', 'color: green; font-size: 24px',web_item);
+        console.log('%c 결과 : ' , 'color: green; font-size: 24px',parameters.GameResult.value);
         break;
       }
     }
