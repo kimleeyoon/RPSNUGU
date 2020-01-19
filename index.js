@@ -92,9 +92,9 @@ class Request {
         } else { // 파라미터가 없다면
 
         }
-        console.log("\u001b[32m스피커가 낸 거 : ",parameters.SpeakerItem.value);
-        console.log("\u001b[32m웹플레이어가 낸 거 : ",web_item);
-        console.log("\u001b[32m결과 : ",obj.game_result);
+        console.log("\u001b[32m스피커가 낸 거 : \u001b[0m",parameters.SpeakerItem.value);
+        console.log("\u001b[32m웹플레이어가 낸 거 : \u001b[0m",web_item);
+        console.log("\u001b[32m결과 : \u001b[0m",obj.game_result);
         break;
       }
 
@@ -131,9 +131,9 @@ class Request {
           WebItem: web_item,
           GameResult: parameters.GameResult.value
         }, sendData);
-        console.log("\u001b[32m스피커가 낸 거 : " ,parameters.SpeakerItem.value);
-        console.log("\u001b[32m웹플레이어가 낸 거 : " ,web_item);
-        console.log("\u001b[32m결과 : " ,parameters.GameResult.value);
+        console.log("\u001b[32m스피커가 낸 거 : \u001b[0m" ,parameters.SpeakerItem.value);
+        console.log("\u001b[32m웹플레이어가 낸 거 : \u001b[0m" ,web_item);
+        console.log("\u001b[32m결과 : \u001b[0m" ,parameters.GameResult.value);
         break;
       }
     }
