@@ -18,7 +18,7 @@ class Request {
     let setPar = setParametersFactory(response, sendData)
 
     let speaker_item = parameters.SpeakerItem
-    let web_item = 1 //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
+    let web_item = outText[contextId[this.context.session.id]].webSelection //일단 가위라고 쳐 가정. 이걸 웹에서 받아올거임. 가위 : 1, 바위 : 0, 보 : -1
     var obj = {game_result : 0, speakerItemInt : 0}
     // let game_result = 0 //일단 지금은 비긴거. 1은 이긴거, -1은 진거(스피커 값에서 웹 값 뺀 값이 0이면 비김, -1, 2는 이긴거. 나머지는 진거)
     // let speakerItemInt = 0 //주먹으로 초기화. 스피커가 낸 아이템을 정수형으로 변환하는 변수
@@ -92,9 +92,9 @@ class Request {
 
         }
 
-        console.log("스피커가 낸 거 : ",parameters.SpeakerItem.value);
-        console.log("웹플레이어가 낸 거 : ",web_item);
-        console.log("결과 : ",obj.game_result);
+        console.log("%c 스피커가 낸 거 : ", 'color: green; font-size: 24px',parameters.SpeakerItem.value);
+        console.log("%c 웹플레이어가 낸 거 : ", 'color: green; font-size: 24px',web_item);
+        console.log("%c 결과 : ", 'color: green; font-size: 24px',obj.game_result);
         break;
       }
 
@@ -131,9 +131,9 @@ class Request {
           WebItem: web_item,
           GameResult: parameters.GameResult.value
         }, sendData);
-        console.log("스피커가 낸 거 : " ,parameters.SpeakerItem.value);
-        console.log("웹플레이어가 낸 거 : " ,web_item);
-        console.log("결과 : " ,parameters.GameResult.value);
+        console.log("%c 스피커가 낸 거 : ", 'color: green; font-size: 24px',parameters.SpeakerItem.value);
+        console.log("%c 웹플레이어가 낸 거 : ", 'color: green; font-size: 24px',web_item);
+        console.log("%c 결과 : " , 'color: green; font-size: 24px',parameters.GameResult.value);
         break;
       }
     }
