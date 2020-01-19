@@ -103,7 +103,7 @@ function createServer(nuguServer) {
 
 module.exports = createServer;
 
-/*
+
 let systems = new Systems()
 
 function createSystem(id) {
@@ -118,7 +118,7 @@ class Systems {
     this.systems[id] = new System()
   }
 }
-*/
+
 
 // class System {
 //   constructor() {
