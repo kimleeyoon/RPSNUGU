@@ -120,17 +120,17 @@ class Systems {
 }
 
 
-// class System {
-//   constructor() {
-//     this.state = "None"
-//     this.speakerItem = "None"
-//     this.methods = {}
-//     this.methods.setSpeakerItem = function(item) {
-//       this.speakerItem = item
-//     }
-//     this.methods.setState = function(item) {
-//       this.state = item
-//     }
-//   }
+class System {
+  constructor() {
+    this.state = "None"
+    this.speakerItem = "None"
+    this.methods = {}
+    this.methods.setSpeakerItem = function(item) {
+      this.speakerItem = item
+    }
+    this.methods.setState = function(item) {
+      this.state = item
+    }
+  }
 
-// }
+}
